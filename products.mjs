@@ -61,7 +61,7 @@ export const products = [
     pitch: "Your LinkedIn contacts, in a file you own.",
     body: "Exports your connections, your followers and your company page's followers to JSONL. It runs in your own browser with your own login, and the data goes to your downloads folder and nowhere else.",
     specs: [
-      ["Licence", "Not chosen yet"],
+      ["Licence", "AGPL-3.0"],
       ["Needs", "Chrome and a LinkedIn login"],
       ["Output", "JSONL"],
     ],

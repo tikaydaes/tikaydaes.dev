@@ -1,6 +1,6 @@
 FROM node:22-alpine AS build
 WORKDIR /site
-COPY build.mjs products.mjs ./
+COPY build.mjs products.mjs churr.mjs ./
 COPY src ./src
 RUN node build.mjs
 

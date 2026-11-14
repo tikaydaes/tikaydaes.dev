@@ -70,4 +70,20 @@ export const products = [
     source: gh("in-out"),
     art: { src: "p-inout", alt: "Contact cards flying from a box into a folder." },
   },
+  {
+    sku: "TD-005",
+    name: "Churr",
+    kind: "Self-hosted server + apps · not out yet",
+    pitch: "Team chat your group runs for itself.",
+    body: "Channels, threads, search, bots and calls from one Go program with its database inside. Passkeys for sign-in, so no passwords and no email addresses. It is still being built, and its page says exactly what works today.",
+    specs: [
+      ["Licence", "AGPL-3.0"],
+      ["Needs", "A machine with ports 80 and 443 open"],
+      ["Account", "Passkeys only"],
+    ],
+    catch: "You can't have it yet: there is nothing to download. And when you can, whoever runs the server can read everything on it except sealed chats, so run it yourselves.",
+    get: { label: "Visit churr.chat", href: "https://churr.chat" },
+    more: { label: "Where it is up to", href: "churr/" },
+    art: { src: "p-churr", alt: "A purple nightjar in headphones sitting on a small server, with chat bubbles beside it." },
+  },
 ];

@@ -8,6 +8,7 @@ import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { createServer } from "node:http";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
+import { churrPage } from "./churr.mjs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 const dist = join(root, "dist");
@@ -52,7 +53,7 @@ function item(p) {
           ${price}
           <div class="go">
             <a class="btn" href="${esc(p.get.href)}">${esc(p.get.label)} <span aria-hidden="true">→</span></a>
-            <a href="${esc(p.source)}">Read the source</a>
+            ${p.source ? `<a href="${esc(p.source)}">Read the source</a>` : ""}${p.more ? `<a href="${esc(p.more.href)}">${esc(p.more.label)}</a>` : ""}
           </div>
         </footer>
       </article>`;
@@ -209,6 +210,8 @@ async function build() {
   await mkdir(dist, { recursive: true });
   await cp(join(root, "src"), dist, { recursive: true });
   await writeFile(join(dist, "index.html"), page(products, month));
+  // Product pages. src/churr/ (styles and pictures) was copied above.
+  await writeFile(join(dist, "churr", "index.html"), churrPage());
   return products.length;
 }
 

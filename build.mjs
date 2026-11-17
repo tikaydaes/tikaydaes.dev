@@ -16,6 +16,7 @@ const dist = join(root, "dist");
 const SITE = "https://tikaydaes.dev";
 const GITHUB = "https://github.com/tikaydaes";
 const SPONSOR = "https://github.com/sponsors/tikaydaes";
+const CHAT = "https://chat.tikaydaes.dev/";
 const ISSUE = "01";
 
 const esc = (s) =>
@@ -102,6 +103,7 @@ function page(products, month) {
     <a href="#stock">Stock</a>
     <a href="#why">Why it's $0</a>
     <a href="#tin">Honesty box</a>
+    <a href="${CHAT}">Dev chat</a>
     <a href="${GITHUB}">GitHub</a>
   </nav>
 </header>
@@ -193,7 +195,7 @@ function page(products, month) {
 <footer class="fine">
   <p>While stocks last. Stocks are infinite. No rainchecks needed. Not available in stores.</p>
   <p>This site sets no cookies, runs no analytics, ships no JavaScript and loads nothing from anybody else's servers.</p>
-  <p><a href="${GITHUB}">github.com/tikaydaes</a> <span>/</span> <a href="${SPONSOR}">Sponsor</a> <span>/</span> Type: Archivo and Martian Mono, SIL Open Font Licence</p>
+  <p><a href="${GITHUB}">github.com/tikaydaes</a> <span>/</span> <a href="${SPONSOR}">Sponsor</a> <span>/</span> <a href="${CHAT}">Dev chat</a> (where people talk about these tools; runs on Churr, joining needs an invite) <span>/</span> Type: Archivo and Martian Mono, SIL Open Font Licence</p>
 </footer>
 
 </body>

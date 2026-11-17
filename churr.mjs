@@ -4,14 +4,16 @@
 // catalogue's: no terminal props, one cut corner, fills instead of frames.
 // The screenshots in src/churr/ are of the real web chat with a made-up team.
 //
-// Churr is not released. Everything under STATUS is dated; update STATUS_DATE
+// Churr has no release yet; its source is public. Everything under STATUS is dated; update STATUS_DATE
 // and the lists together, from churr/README.md "What exists today".
 
 const SITE = "https://tikaydaes.dev";
 const GITHUB = "https://github.com/tikaydaes";
 const SPONSOR = "https://github.com/sponsors/tikaydaes";
 const CHURR = "https://churr.chat";
-const STATUS_DATE = "14 November 2026";
+const SOURCE = "https://github.com/tikaydaes/churr";
+const CHAT = "https://chat.tikaydaes.dev/";
+const STATUS_DATE = "17 November 2026";
 
 const esc = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -26,10 +28,10 @@ const features = [
   ["built", "No passwords, no email", "Passkeys, with recovery codes. Company sign-in over OIDC or SAML if you need it."],
   ["built", "A way in, and a way out", "An importer for Slack exports, and an export of everything the server holds, for the owner."],
   ["built", "Retention that deletes", "Set a period and messages older than it are removed, not hidden."],
-  ["soon", "Sealed chats", "End-to-end encrypted, between exactly two people. The server stores what it cannot read."],
-  ["soon", "Calls", "Voice, video and screen sharing, carried by your own server."],
-  ["soon", "Apps", "Android, iPhone, macOS, Windows and Linux, from one codebase. Text chat works in it already."],
-  ["built", "Shared channels", "A channel shared between two Churr servers, linked directly or through a hub. Tested, never used for real."],
+  ["built", "Sealed chats", "End-to-end encrypted, between exactly two people. The server stores what it cannot read. Not yet reviewed by anyone outside the project."],
+  ["built", "Calls", "Voice, video and screen sharing, carried by your own server."],
+  ["built", "Apps", "One codebase, with builds for Android, macOS and the iPhone simulator. It has not run on a real phone yet."],
+  ["built", "Shared channels", "A channel shared between Churr servers, linked directly or through a hub. Tested with a load tool, not yet with people."],
 ];
 
 const sees = [
@@ -51,23 +53,23 @@ const outside = [
 
 const status = {
   built: [
-    "The server: every one of its API operations, sign-in in all its forms, bots and webhooks, the Slack importer and the export",
-    "Links between servers: shared channels, hubs and the push relay",
-    "The web pages (setup, sign-in, account, admin) and the web chat",
-    "The app, for text chat, forms, search, settings and themes",
+    "The server, on SQLite and PostgreSQL, with bots, webhooks, the Slack importer and the export",
+    "The web chat and the app, including calls and sealed chats",
+    "Links between servers, the hub and the push relay",
     "The sealed-chat encryption, in two languages, passing the same test vectors",
   ],
-  soon: [
-    "Calls, in the app and the web chat",
-    "Sealed chats, in the app and the web chat",
-    "Phone notifications",
-    "The desktop tray icon",
+  proven: [
+    "Single servers of up to 50,000 members, with a load tool as the members",
+    "A call with 25 on audio and 8 on video",
+    "Three servers sharing a channel through a hub",
+    "A real certificate from Let's Encrypt",
+    "One real community: the Tikaydaes dev chat",
   ],
   never: [
-    "A person using it end to end, or a real community on it",
-    "Android, Windows and Linux builds of the app",
-    "Fetching a real certificate, or running behind a reverse proxy",
-    "The container image",
+    "The app on a real phone, and Windows and Linux builds",
+    "The web chat in Firefox or Safari",
+    "Real Apple and Google push",
+    "The container image and the reverse-proxy examples",
     "A real Slack export, only small hand-made ones",
     "An outside review of the sealed-chat encryption",
   ],
@@ -79,8 +81,8 @@ const tag = (kind) =>
 export function churrPage() {
   const title = "Churr: team chat your group runs for itself";
   const description =
-    "Self-hosted team chat in one program: channels, threads, search, bots and passkeys. Free and open source. Not released yet; this page says what works today.";
-  const strip = ["Self-hosted team chat", "One program", "No passwords", "No email", "$0.00", "AGPL-3.0", "Not out yet"]
+    "Self-hosted team chat in one program: channels, threads, search, bots and passkeys. Free and open source. No release yet; this page says what works today.";
+  const strip = ["Self-hosted team chat", "One program", "No passwords", "No email", "$0.00", "AGPL-3.0", "Not finished"]
     .map((t) => `<span>${t}</span>`)
     .join("");
 
@@ -127,7 +129,7 @@ export function churrPage() {
     </div>
     <div class="hero-art">
       <img class="sticker" src="sticker.webp" width="720" height="755" alt="The Churr mascot: a purple nightjar wearing headphones, sitting on a small server with chat bubbles beside it.">
-      <span class="stamp">not out yet</span>
+      <span class="stamp">not finished</span>
       <span class="price" aria-label="Price: zero dollars">$0<small>.00</small></span>
     </div>
   </section>
@@ -153,12 +155,12 @@ export function churrPage() {
         )
         .join("\n      ")}
     </div>
-    <p class="note">Sealed chats are still being built, and shared channels, the hub and the push relay have only run in tests. The table is how they are designed to work.</p>
+    <p class="note">The sealed-chat encryption has not been reviewed by anyone outside the project. Do not rely on it until it has.</p>
     <p class="note">Nothing on disk is encrypted except sealed chats and the server's own secrets. Use disk encryption, and treat a backup as you treat the server.</p>
   </section>
 
   <section id="does">
-    <div class="bar"><h2>What it does</h2><p>and what it doesn't do yet</p></div>
+    <div class="bar"><h2>What it does</h2><p>all of it built, none of it finished</p></div>
     <div class="feats">
       ${features
         .map(
@@ -189,14 +191,14 @@ export function churrPage() {
       <div>
         <p>Churr is one Go program with its database inside. Give it a host name and a folder:</p>
         <pre class="code"><code>churr serve -hostname chat.example.com -data /var/lib/churr</code></pre>
-        <p>It listens on ports 80 and 443 and is designed to fetch and renew its own certificate. Everything a community is lives in that one folder, and one command backs it up while the server runs.</p>
+        <p>It listens on ports 80 and 443 and fetches and renews its own certificate. Everything a community is lives in that one folder, and one command backs it up while the server runs.</p>
         <p>SQLite is the default. PostgreSQL is there if you prefer it, with a command that moves a community between the two.</p>
       </div>
       <dl class="specs">
         <div><dt>Licence</dt><dd>AGPL-3.0</dd></div>
         <div><dt>Needs</dt><dd>A machine with a public address, a host name, and ports 80 and 443. Calls add port 24877.</dd></div>
         <div><dt>Account</dt><dd>Passkeys. No password, no email address.</dd></div>
-        <div><dt>One test run</dt><dd>500 members connected on one CPU core: the server peaked at 147 MiB of memory. One run, on one laptop, with no files, search or calls.</dd></div>
+        <div><dt>Size</dt><dd>One processor and 1 GB of memory carried up to 5,000 people online in tests on rented servers, with a load tool as the members.</dd></div>
         <div><dt>Uses AI when it runs</dt><dd>No.</dd></div>
       </dl>
     </div>
@@ -217,24 +219,25 @@ export function churrPage() {
 
   <section id="status" class="status">
     <div class="bar"><h2>Where it is up to</h2><p>written ${STATUS_DATE}</p></div>
-    <p class="big">Churr is not finished, and there is nothing to download yet.</p>
+    <p class="big">Churr is built and its source is public. It is not finished, and there is no release yet.</p>
     <div class="cols">
       <div class="col built">
         <h3><span class="tag c">built</span> Passes automated tests</h3>
         <ul>${status.built.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
       </div>
       <div class="col soon">
-        <h3><span class="tag p">being built</span> Started, not done</h3>
-        <ul>${status.soon.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
+        <h3><span class="tag">run for real</span> On rented servers</h3>
+        <ul>${status.proven.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
       </div>
       <div class="col never">
-        <h3><span class="tag y">untried</span> Never run for real</h3>
+        <h3><span class="tag y">untried</span> Not done yet</h3>
         <ul>${status.never.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
       </div>
     </div>
-    <p>Churr is being built the way everything in the catalogue is: a person sets the requirements and makes the decisions, and AI agents write the code and its tests. The source will go up at <a href="${GITHUB}">github.com/tikaydaes</a> when a group could reasonably try it. Churr has a site of its own, with more detail: <a href="${CHURR}">churr.chat</a>.</p>
+    <p>Churr is being built the way everything in the catalogue is: a person sets the requirements and makes the decisions, and AI agents write the code and its tests. The source is at <a href="${SOURCE}">github.com/tikaydaes/churr</a>. The <a href="${CHAT}">Tikaydaes dev chat</a> is where people talk about Churr and the other tools, and it runs on Churr. Joining needs an invite. Churr has a site of its own, with more detail: <a href="${CHURR}">churr.chat</a>.</p>
     <div class="row">
       <a class="btn" href="${CHURR}">Visit churr.chat</a>
+      <a class="ghost" href="${SOURCE}">Read the source</a>
       <a class="ghost" href="${SPONSOR}">Sponsor on GitHub</a>
       <a class="ghost" href="../">Back to the catalogue</a>
     </div>

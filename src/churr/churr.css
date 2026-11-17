@@ -197,7 +197,7 @@ figcaption { font: 400 .75rem/1.6 var(--mono); color: var(--dim); max-width: 70c
 .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; margin-bottom: 8px; }
 .col { background: var(--panel); padding: 20px 18px; }
 .col.built { box-shadow: inset 4px 0 0 var(--cyan); }
-.col.soon { box-shadow: inset 4px 0 0 var(--pink); }
+.col.soon { box-shadow: inset 4px 0 0 var(--lav); }
 .col.never { box-shadow: inset 4px 0 0 var(--yel); }
 .col h3 { margin: 0 0 12px; font: 800 1.05rem/1.2 var(--sans); font-stretch: 85%; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
 .col ul { margin: 0; padding-left: 1.1em; display: grid; gap: 7px; color: var(--dim); font-size: .95rem; }

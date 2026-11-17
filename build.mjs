@@ -195,7 +195,7 @@ function page(products, month) {
 <footer class="fine">
   <p>While stocks last. Stocks are infinite. No rainchecks needed. Not available in stores.</p>
   <p>This site sets no cookies, runs no analytics, ships no JavaScript and loads nothing from anybody else's servers.</p>
-  <p><a href="${GITHUB}">github.com/tikaydaes</a> <span>/</span> <a href="${SPONSOR}">Sponsor</a> <span>/</span> <a href="${CHAT}">Dev chat</a> (where people talk about these tools; runs on Churr, joining needs an invite) <span>/</span> Type: Archivo and Martian Mono, SIL Open Font Licence</p>
+  <p><a href="${GITHUB}">github.com/tikaydaes</a> <span>/</span> <a href="${SPONSOR}">Sponsor</a> <span>/</span> <a href="${CHAT}">Dev chat</a> (where people talk about these tools; runs on Churr, open to anyone) <span>/</span> Type: Archivo and Martian Mono, SIL Open Font Licence</p>
 </footer>
 
 </body>

@@ -234,7 +234,7 @@ export function churrPage() {
         <ul>${status.never.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
       </div>
     </div>
-    <p>Churr is being built the way everything in the catalogue is: a person sets the requirements and makes the decisions, and AI agents write the code and its tests. The source is at <a href="${SOURCE}">github.com/tikaydaes/churr</a>. The <a href="${CHAT}">Tikaydaes dev chat</a> is where people talk about Churr and the other tools, and it runs on Churr. Joining needs an invite. Churr has a site of its own, with more detail: <a href="${CHURR}">churr.chat</a>.</p>
+    <p>Churr is being built the way everything in the catalogue is: a person sets the requirements and makes the decisions, and AI agents write the code and its tests. The source is at <a href="${SOURCE}">github.com/tikaydaes/churr</a>. The <a href="${CHAT}">Tikaydaes dev chat</a> is where people talk about Churr and the other tools, and it runs on Churr. Anyone can join, and it has a playground where every feature is set up to be tried. Churr has a site of its own, with more detail: <a href="${CHURR}">churr.chat</a>.</p>
     <div class="row">
       <a class="btn" href="${CHURR}">Visit churr.chat</a>
       <a class="ghost" href="${SOURCE}">Read the source</a>
